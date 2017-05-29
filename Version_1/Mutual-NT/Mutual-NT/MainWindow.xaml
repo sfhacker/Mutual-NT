@@ -1,0 +1,110 @@
+﻿<Window x:Class="Mutual_NT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialMenu="clr-namespace:MaterialMenu;assembly=EIV.SlideMenu"
+        mc:Ignorable="d"
+        Title="Mutual NT/2017" Height="350" Width="525"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Foreground="WhiteSmoke"
+        Background="LightGray"
+        >
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="MenuImages/logo.png" Stretch="None"/>
+        </Grid.Background>
+        <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="CustomMenu"
+                               MenuWidth="300"
+                               Theme="None"
+                               State="Hidden"
+                               ButtonBackground="Red"
+                               ButtonHover="Black"
+                               ShadowBackground="Black">
+            <materialMenu:SideMenu.Menu>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" Background="Blue">
+                    <StackPanel Orientation="Vertical">
+                        <Border Background="BlueViolet">
+                            <Grid Margin="10">
+                                <TextBox Height="100" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Bottom" FontFamily="Calibri" FontSize="18" Foreground="WhiteSmoke" FontWeight="Bold">This is a custom colors example.</TextBox>
+                            </Grid>
+                        </Border>
+                        <materialMenu:MenuButton Image="MenuImages/boss.png" Text="Administration"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/boxl.png" Text="Packing" MouseDown="UIElement_OnMouseDown"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/bugl.png" Text="Logistics"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/orgl.png" Text="Org"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/savel.png" Text="SaveChanges"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/Helpl.png" Text="Help"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/timesl.png" Text="Close Menu"></materialMenu:MenuButton>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialMenu:SideMenu.Menu>
+        </materialMenu:SideMenu>
+        <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="Menu"
+                               MenuWidth="300"
+                               Theme="Default"
+                               State="Hidden">
+            <materialMenu:SideMenu.Menu>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Orientation="Vertical">
+                        <Border>
+                            <Border.Background>
+                                <ImageBrush ImageSource="MenuImages/Seamless-Polygon-Backgrounds-Vol2-full.jpg" Stretch="None" AlignmentX="Right"></ImageBrush>
+                            </Border.Background>
+                            <Grid Margin="10">
+                                <TextBox Height="200" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Bottom" FontFamily="Calibri" FontSize="18" Foreground="WhiteSmoke" FontWeight="Bold">MUTUAL [NT 2017]</TextBox>
+                            </Grid>
+                        </Border>
+                        <materialMenu:MenuButton Image="MenuImages/boss.png" Text="Personas">
+                            <materialMenu:MenuButton.Children>
+                                <materialMenu:MenuButton Image="MenuImages/boss.png" Text="Ingreso Personas">
+                                    <materialMenu:MenuButton.Children>
+                                        <materialMenu:MenuButton Image="MenuImages/boss.png" Text="Usuarios"></materialMenu:MenuButton>
+                                    </materialMenu:MenuButton.Children>
+                                </materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="MenuImages/orgl.png" Text="Grupo Economico"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="MenuImages/savel.png" Text="Cambio de Documento"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="MenuImages/Helpl.png" Text="Calculo consumo"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="MenuImages/timesl.png" Text="Paises" MouseDown="PaisesClick"></materialMenu:MenuButton>
+                            </materialMenu:MenuButton.Children>
+                        </materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/boxl.png" Text="Prestamos" MouseDown="UIElement_OnMouseDown"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/bugl.png" Text="Plazo Fijo"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/orgl.png" Text="Caja"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/savel.png" Text="Contabilidad">
+                            <materialMenu:MenuButton.Children>
+                                <materialMenu:MenuButton Image="MenuImages/boss.png" Text="Ingreso de asientos manuales"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="MenuImages/bugl.png" Text="Ajuster por inflacion"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="MenuImages/orgl.png" Text="Proceso de devengamiento"></materialMenu:MenuButton>
+                                <materialMenu:MenuButton Image="MenuImages/savel.png" Text="Reportes">
+                                    <materialMenu:MenuButton.Children>
+                                        <materialMenu:MenuButton Image="MenuImages/boss.png" Text="Plan de Cuentas"></materialMenu:MenuButton>
+                                    </materialMenu:MenuButton.Children>
+                                </materialMenu:MenuButton>
+                            </materialMenu:MenuButton.Children>
+                        </materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/Helpl.png" Text="Bienes de Uso"></materialMenu:MenuButton>
+                        <materialMenu:MenuButton Image="MenuImages/timesl.png" Text="Cerrar Menu" MouseDown="CloseClick"></materialMenu:MenuButton>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialMenu:SideMenu.Menu>
+        </materialMenu:SideMenu>
+        <StackPanel HorizontalAlignment="Right" Width="200" Orientation="Vertical">
+            <Button Margin="10" Click="ButtonBase_OnClick">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border Height="50" Width="50" HorizontalAlignment="Right"
+                                Background="WhiteSmoke"
+                                BorderBrush="DarkGray"
+                                BorderThickness="1"
+                                CornerRadius="3">
+                            <Image Source="MenuImages/Dark64.png" Margin="12"></Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
