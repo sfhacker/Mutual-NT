@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="EIV.UserControl.Ejemplos.UserControl2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns:local="clr-namespace:EIV.UserControl.Ejemplos"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <telerik:RadTabControl x:Name="paisesTab" SelectionChanged="paisesTab_SelectionChanged" Margin="0,19,0,-19">
+            <telerik:RadTabItem Header="Listado" >
+                <!-- ItemTemplate="{StaticResource headerTemplate}" -->
+                <!--<telerik:RadPanelBar ItemsSource="{Binding}" 
+                                     Margin="20"/>-->
+                <!-- Margin="35,30,0,0" -->
+                <!-- Added StackPanel here -->
+                <!--ShowGroupPanel="False"-->
+                <!--Width="Auto"-->
+                <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                    <!--<CheckBox x:Name="checkBox" Content="CheckBox" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>-->
+                    <telerik:RadGridView x:Name="gridView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Loaded="gridView_Loaded"
+                                         DataLoading="gridView_DataLoading" DataLoaded="gridView_DataLoaded" RowEditEnded="gridView_RowEditEnded" Deleting="gridView_Deleting"
+                             AutoGenerateColumns="False" CanUserReorderColumns="False" SelectionMode="Extended" NewRowPosition="Top">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding id}" Header="Id" UniqueName="paisId" />
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding nombre, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Header="Nombre" UniqueName="paisName" Validation.Error="GridViewDataColumn_Error" />
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding prefijo}" Header="Prefijo" UniqueName="paisDialCode" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <!-- PageSize="5" -->
+                    <telerik:RadDataPager x:Name="dataPager" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Bottom"/>
+
+                    <StackPanel x:Name="contentWrapper" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <telerik:RadButton x:Name="btnAceptar" Content="Aceptar" Height="Auto" VerticalAlignment="Top" Width="Auto" Click="btnAceptar_Click"/>
+                        <telerik:RadButton x:Name="btnSalir" Content="Salir" Height="Auto" VerticalAlignment="Top" Width="Auto" Click="btnSalir_Click"/>
+                    </StackPanel>
+
+                    <StatusBar HorizontalAlignment="Stretch" Height="47" VerticalAlignment="Bottom">
+                        <StatusBarItem>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock x:Name="statusInfo" TextWrapping="WrapWithOverflow" 
+                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                           ScrollViewer.VerticalScrollBarVisibility="Auto"
+                           ScrollViewer.CanContentScroll="True" />
+                            </ScrollViewer>
+                        </StatusBarItem>
+                    </StatusBar>
+                </StackPanel>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Detalle" IsEnabled="False">
+                <StackPanel HorizontalAlignment="Left" Width="200" Orientation="Vertical">
+                    <telerik:Label x:Name="lblId" Content="Id" Height="30" Width="40" Margin="16,0,144,0"/>
+                    <TextBox x:Name="txtId" Height="23" TextWrapping="Wrap" Text="TextBox" Width="50" IsEnabled="False" Margin="42,0,108,0" />
+                    <telerik:Label x:Name="lblNombre" Content="Nombre" Height="30" Margin="19,0,123,0"/>
+                    <TextBox x:Name="txtNombre" Height="23" TextWrapping="Wrap" Text="{Binding nombre, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Validation.Error="txtNombre_Error"   Width="150" Margin="44,0,6,0"/>
+                    <telerik:Label x:Name="lblPrefijo" Content="Prefijo" Height="30" Margin="19,0,123,0"/>
+                    <TextBox x:Name="txtPrefijo" Height="23" TextWrapping="Wrap" Text="TextBox" Width="80" Margin="46,0,74,0"/>
+                    <telerik:RadButton x:Name="btnGuardar" Content="Guardar" Height="Auto" Margin="112,20,8,0" Click="btnGuardar_Click"/>
+                    <telerik:RadButton x:Name="btnEliminar" Content="Eliminar" Height="Auto" Margin="112,5,8,0" Click="btnEliminar_Click"/>
+                </StackPanel>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+
+    </Grid>
+</UserControl>
